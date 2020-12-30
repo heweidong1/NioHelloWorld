@@ -1,0 +1,19 @@
+package com.luban.nio;
+
+import java.nio.IntBuffer;
+import java.security.SecureRandom;
+
+public class Dome1 {
+    public static void main(String[] args) {
+        //IntBuffer.allocate(8); 最大容量 8
+        IntBuffer buffer = IntBuffer.allocate(8);
+        for (int i=0;i<buffer.capacity();i++){
+            int nextInt = new SecureRandom().nextInt(20);
+            buffer.put(nextInt);
+        }
+        buffer.flip();
+        while (buffer.hasRemaining()){
+            System.out.println(buffer.get());
+        }
+    }
+}
